@@ -11,6 +11,7 @@ public class QuickSort {
         for (int i = 0; i < array.length; i++) {
             array[i] = random.nextInt(100);
         }
+
         System.out.println(Arrays.toString(array));
         System.out.println("++++++++++++++++++++++++++++++++++++++");
         quickSort(array, 0, array.length - 1);
