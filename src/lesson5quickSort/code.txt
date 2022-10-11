@@ -25,7 +25,7 @@ var partition(array[], var begin, var end) {
 
 quickSort(array[], var begin, var end) {
 	if(end <= begin) break;
-	var pivot = patition(arr, begin, end);
+	var pivot = partition(arr, begin, end);
   quickSort(arr, begin, pivot-1);
   quickSort(arr, pivot+1, end);
 }

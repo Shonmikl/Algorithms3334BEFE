@@ -1,4 +1,4 @@
-package lesson5;
+package lesson5quickSort;
 
 import java.util.Arrays;
 import java.util.Random;
