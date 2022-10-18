@@ -1,4 +1,4 @@
-package lesson6dynamic;
+package lesson7famous;
 
 import java.util.Random;
 
