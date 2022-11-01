@@ -18,7 +18,10 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        String expressionText = "122-1/(11+2*(163-4*3))";
+        String expressionText = "5*5+(3*3*3)";
+        List<Lexeme> lexemes = lexAnalyze(expressionText);
+        LexemeBuffer lexemeBuffer = new LexemeBuffer(lexemes);
+        System.out.println(expr(lexemeBuffer));
         //String s = "202+8";
     }
 
@@ -55,6 +58,30 @@ public class Main {
                     "type=" + type +
                     ", value='" + value + '\'' +
                     '}';
+        }
+    }
+
+    //4. Вспомогательный класс
+    //для хранения инфы прохода по массиву
+    //"123+5*9*(4*9-6)
+    public static class LexemeBuffer {
+        private int pos;
+        public List<Lexeme> lexemes;
+
+        public LexemeBuffer(List<Lexeme> lexemes) {
+            this.lexemes = lexemes;
+        }
+
+        public Lexeme next() {
+            return lexemes.get(pos++);
+        }
+
+        public void back() {
+            pos--;
+        }
+
+        public int getPos() {
+            return pos;
         }
     }
 
@@ -138,15 +165,92 @@ public class Main {
         return lexemes;
     }
 
+    //Пишем синтаксический анализатор
+    public static int expr(LexemeBuffer lexemes) {
+        //25+9-(16*5-(11+6))
+        Lexeme lexeme = lexemes.next();
+        //сделать проверку на пустое выражение
+        //если первая лексема это конец строки то вернем 0
+        if (lexeme.type == LexemeType.END) {
+            return 0;
+        } else {
+            //иначе вернемся назад и запустим вычисления + и -
+            //будем смотреть на выражение внутри начиная с + и -
+            lexemes.back();
+            return plusMinus(lexemes);
+        }
+    }
+
+    public static int factor(LexemeBuffer lexemes) {
+        //прочитать лексему
+        Lexeme lexeme = lexemes.next();
+        //смотрим ее тип
+        switch (lexeme.type) {
+            case NUMBER: //если лексема само число
+                return Integer.parseInt(lexeme.value);
+            case LEFT_BRACKET:
+                //если левая скобка
+                //то смотрим что в скобках
+                int value = expr(lexemes);
+                lexeme = lexemes.next();
+                //25+9-(16*5-(11+6))
+                //если правой скобки нет то выражение не верно
+                if(lexeme.type != LexemeType.RIGHT_BRACKET) {
+                    throw new RuntimeException("Unexpected token:" + lexeme.value);
+                }
+                return value;
+            default:
+                throw new RuntimeException("Unexpected token:" + lexeme.value);
+        }
+    }
+
+    public static int multDiv(LexemeBuffer lexemes) {
+        //значение первого числа(фактора)
+        int value = factor(lexemes);
+        //25+9-(16*5-(11+6))
+        while (true) {
+            //достаем след лексему
+            Lexeme lexeme = lexemes.next();
+            switch (lexeme.type) {
+                case OP_MUL:
+                    value  = value * factor(lexemes);
+                    break;
+                case OP_DIV:
+                    value = value / factor(lexemes);
+                    break;
+                case END:
+                case RIGHT_BRACKET:
+                case OP_PLUS:
+                case OP_MINUS:
+                    //если мы не умножаем и не делим то возвращаем
+                    //указатель назад
+                    //и возвращаем позицию первого множителя
+                    lexemes.back();
+                    return value;
+                default:
+                    throw new RuntimeException("Unexpected token:" + lexeme.value);
+            }
+        }
+    }
+
+    public static int plusMinus(LexemeBuffer lexemes) {
+        //25+9-(16*5-(11+6*9))
+        int value = multDiv(lexemes);
+        while (true) {
+            Lexeme lexeme = lexemes.next();
+            switch (lexeme.type) {
+                case OP_PLUS:
+                    value = value + multDiv(lexemes);
+                    break;
+                case OP_MINUS:
+                    value = value - multDiv(lexemes);
+                case END:
+                case RIGHT_BRACKET:
+                    lexemes.back();
+                    return value;
+                default:
+                    throw new RuntimeException("Unexpected token:" + lexeme.value);
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
