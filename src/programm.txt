@@ -1,0 +1,18 @@
+*****************  Introduction, simple examples.
+++Big-O notation, Simple Problems, Naive Approach
+++Recursion, Stack
+++Introduction to Divide and Conquer Algorithms. Examples
+++Merge Sort
+++Quick Sort
+++Dynamic Arrays (Array List) and amortized analysis
+++Dynamic Programming
+++Stacks and Queues
+++Linked List
+******************  Test. Introduction to Greedy Algorithms. Examples
+!! Greedy practice
+!! Trees. Binary Tree, AVL Tree.
+!! Binary Search Tree
+!! Hashing, Hash Functions and Hash Tables
+!! Practice BST or Hash
+++ Popular algorithms for technical interviews
+******************   Test. Summarizing
