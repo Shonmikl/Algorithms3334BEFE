@@ -12,14 +12,34 @@ import java.util.TreeMap;
  */
 public class Haffman {
     public static void main(String[] args) {
-        String text =
-                "Sri Lanka Cricket wishes to emphasise that " +
-                        "it adopts a 'zero tolerance' policy for any such conduct " +
-                        "by a player and will provide all the required support to " +
-                        "the Australian law enforcement authorities to carry out an " +
-                        "impartial inquiry into the incident.";
+//        String text =
+//                "Sri Lanka Cricket wishes to emphasise that " +
+//                        "it adopts a 'zero tolerance' policy for any such conduct " +
+//                        "by a player and will provide all the required support to " +
+//                        "the Australian law enforcement authorities to carry out an " +
+//                        "impartial inquiry into the incident.";
+
+        String text = "0101100110011011111010111101101010010000111101111" +
+                "01011111100110111010110000111100001111000100101110100011" +
+                "11110010100111001011011111000001010111001111110110100101110" +
+                "10011001110010111111010011111011001111110101010011001110001" +
+                "1010011111011111000001010110101100100101101110010110000011001" +
+                "00111010100101011100100000111101110011000001011101010001111110" +
+                "0000001101001111110101000001111110100100011010101111111101010110" +
+                "0100010101000110101001111010110000001111111011110111000001101000" +
+                "111100100111111010100010101110001001011000000001110111010010110010" +
+                "110111011010101100111110100000000111001011111100111100111001000010" +
+                "10001101110011100010101111010010001011100111001101001001111001011011" +
+                "10010111111001110101110010001101000011001110100001011110101001110000110" +
+                "1000100111110001001000000011010011010111000001011100010000111111011000" +
+                "10010111101101001101100110111100101001110010110111101011101100110010001" +
+                "11110110100010011111101010011110110001010111011011001001101111010000111" +
+                "10110100100001010001101110010001111110110100001011011100101111110011110" +
+                "110100101011011010101100010000101011101";
 
         String aab = "aabaacca";
+
+        long time = System.currentTimeMillis();
 
         //Вычисляем частоту символов в тексте.
         TreeMap<Character, Integer> frequencies = countFrequency(text);
@@ -63,6 +83,8 @@ public class Haffman {
         String decoded = huffmanDecode(encoded.toString(), tree);
 
         System.out.println("Расшифрованная строка: " + decoded);
+
+        System.out.println(System.currentTimeMillis() - time);
     }
 
     //1. Считаем кол-во символов
