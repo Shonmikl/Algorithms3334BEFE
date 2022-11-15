@@ -70,7 +70,7 @@ public class Node {
             return;
         }
         inOrderTraversal(node.left);
-        System.out.println("[" + node.value + "]");
+        System.out.print("[" + node.value + "]");
         inOrderTraversal(node.right);
     }
 
@@ -81,7 +81,7 @@ public class Node {
         }
         postOrderTraversal(node.left);
         postOrderTraversal(node.right);
-        System.out.println("[" + node.value + "]");
+        System.out.print("[" + node.value + "]");
     }
 
     //Сим обход
@@ -89,7 +89,7 @@ public class Node {
         if (!isNodeExist(node)) {
             return;
         }
-        System.out.println("[" + node.value + "]");
+        System.out.print("[" + node.value + "]");
         dOrderTraversal(node.left);
         dOrderTraversal(node.right);
     }
@@ -122,11 +122,11 @@ public class Node {
 
     private static boolean remove(Node root, int value) {
         Node nodeToDelete = search(root, value);
-        if(!isNodeExist(nodeToDelete)) {
+        if (!isNodeExist(nodeToDelete)) {
             return false;
         }
         int childrenCount = getChildrenCount(nodeToDelete);
-        if(childrenCount < 2) {
+        if (childrenCount < 2) {
             removeNodeWithOneOrZeroChild(nodeToDelete);
         } else {
             Node minNode = getMin(nodeToDelete.left);
@@ -135,5 +135,19 @@ public class Node {
             removeNodeWithOneOrZeroChild(minNode);
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        Integer[] digit = {9, 3, 10, 2, 1, 7, 6, 12, 14, 11};
+        Node node = new Node();
+
+        for (int i = 0; i < digit.length; i++) {
+            insert(node, digit[i]);
+        }
+        inOrderTraversal(node);
+        System.out.println("\n**********************");
+        dOrderTraversal(node);
+        System.out.println("\n**********************");
+        postOrderTraversal(node);
     }
 }
