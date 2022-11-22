@@ -141,8 +141,8 @@ public class Node {
         Integer[] digit = {9, 3, 10, 2, 1, 7, 6, 12, 14, 11};
         Node node = new Node();
 
-        for (int i = 0; i < digit.length; i++) {
-            insert(node, digit[i]);
+        for (Integer integer : digit) {
+            insert(node, integer);
         }
         inOrderTraversal(node);
         System.out.println("\n**********************");
