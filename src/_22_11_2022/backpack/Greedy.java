@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 //Жадные алгоритмы
 public class Greedy {
+    //todo доделать
     public static void main(String[] args) {
 
         int[] weight = {3, 4, 5, 8, 9, 1};
