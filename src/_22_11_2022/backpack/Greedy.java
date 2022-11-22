@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Greedy {
     public static void main(String[] args) {
 
-        int[] weight = {3, 4, 5, 8, 9};
-        int[] price = {1, 6, 4, 7, 6};
-        int maxWeight = 13;
+        int[] weight = {3, 4, 5, 8, 9, 1};
+        int[] price = {1, 6, 4, 7, 6, 3};
+        int maxWeight = 15;
 
         /**
          * Будем искать самый дорогой предмет и класть его в рюкзак если
@@ -36,10 +36,18 @@ public class Greedy {
                 }
             }
 
+
+//            if(resultWeight + weight[maxIndex] > maxWeight) {
+//                break;
+//            } else {
+//                resultWeight = resultWeight + weight[maxIndex];
+//            }
+
             resultWeight = resultWeight + weight[maxIndex];
             if(resultWeight > maxWeight) {
                 break;
             }
+
             //мы кладем в рюкзак до тех пор,
             //пока не закончится наш набор или не будет превышен вес рюкзака
             result.add(maxIndex);
@@ -48,7 +56,12 @@ public class Greedy {
 
         System.out.println("Содержимое рюкзака: ");
         for (Integer integer : result) {
-            System.out.println(integer + 1);
+//            System.out.println(integer + 1);
+//            System.out.println("Версия Анатолия:  ))");
+            System.out.println("Set number is: " + (integer + 1) +"|| weight "+weight[integer]+"|| price= "+price[integer]);
+
         }
+
+
     }
 }
