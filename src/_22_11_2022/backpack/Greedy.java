@@ -62,7 +62,5 @@ public class Greedy {
             System.out.println("Set number is: " + (integer + 1) +"|| weight "+weight[integer]+"|| price= "+price[integer]);
 
         }
-
-
     }
 }
