@@ -17,4 +17,8 @@
 ++ Popular algorithms for technical interviews
 !! Графы (Алгоритм Дейкстры)
 !! Оптимизация рекурсии
+!! Red Black Tree
+!! AVL
+!! Rotation Tree
+!! Задачи на функциональные интерфейсы
 ******************   Test. Summarizing
