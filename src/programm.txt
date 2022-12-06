@@ -15,7 +15,7 @@
 ++ Hashing, Hash Functions and Hash Tables
 ++ Practice BST or Hash
 ++ Popular algorithms for technical interviews
-!! Графы (Алгоритм Дейкстры)
+++ Графы (Алгоритм Дейкстры)
 !! Оптимизация рекурсии
 !! Red Black Tree
 !! AVL
