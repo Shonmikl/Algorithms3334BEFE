@@ -8,7 +8,7 @@
 ++ Dynamic Programming
 ++ Stacks and Queues
 ++ Linked List
-******************  Test. Introduction to Greedy Algorithms. Examples
+******************  Test. Introduction to Greedy Algorithms. Examples ******************
 ++ Greedy practice
 ++ Trees. Binary Tree, AVL Tree.
 ++ Binary Search Tree
@@ -19,6 +19,6 @@
 !! Оптимизация рекурсии
 ++ Red Black Tree
 ++ AVL
-!! Rotation Tree
-!! Задачи на функциональные интерфейсы
-******************   Test. Summarizing
+++ Rotation Tree
+++ Задачи на функциональные интерфейсы
+******************   Test. Summarizing ******************
